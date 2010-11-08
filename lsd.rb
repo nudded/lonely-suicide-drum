@@ -5,7 +5,7 @@ class LSD < Sinatra::Base
   MUSIC_DIRECTORY = File.expand_path '~/test_music/'
 
   get '/songs' do
-    Dir[MUSIC_DIRECTORY + '/*'].join ' '
+    @songs = Dir[MUSIC_DIRECTORY + '/*']
   end
 
   get '/' do 

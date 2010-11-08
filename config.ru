@@ -1,4 +1,4 @@
 $:.unshift Dir.pwd
-require 'lsd.rb'
+require 'lsd'
 
 run LSD.new

@@ -1,0 +1,28 @@
+
+=========
+
+Music streaming interface. Should be easily adaptable to other players.
+
+How does it work?
+-----------------
+
+Have a directory say `music` with a limited capacity of `x`. This app will play
+the song with the lowest modification date in this directory. (How it should
+play this can be abstracted).
+
+The interface should allow people to upload songs into this directory. No
+pausing or skipping is allowed! 
+
+REST api
+--------
+
+/songs/put
+
+/songs/delete/:id
+
+/songs/get.:format 
+
+/volume/put
+
+/volume/get
+

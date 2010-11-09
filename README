@@ -16,13 +16,6 @@ pausing or skipping is allowed!
 REST api
 --------
 
-/songs/put
+GET /songs => Show song listing
 
-/songs/delete/:id
-
-/songs/get.:format 
-
-/volume/put
-
-/volume/get
-
+PUT /songs => Upload song(s)

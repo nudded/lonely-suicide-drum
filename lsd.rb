@@ -1,5 +1,6 @@
 require 'fileutils'
 require 'sinatra/base'
+require 'player'
 
 class LSD < Sinatra::Base
 
@@ -13,6 +14,10 @@ class LSD < Sinatra::Base
   # Start with an empty queue
   @@queue = Array.new
   @@id = 0
+
+  # Start the player
+  player = Player.new @@queue
+  Thread.new {player.run}
 
   # Show song list
   get '/songs' do

@@ -1,4 +1,4 @@
-<div class="now_playing">
+<div id="now_playing">
   <% if now_playing %>
     <h1>Now playing:</h1>
     <%= erb :song, :locals => {:song => now_playing} %>
@@ -6,10 +6,10 @@
     <h1>Not playing.</h1>
   <% end %>
 </div>
-<div class="queue">
+<div id="queue">
   <% if not queue.empty? %>
     <h1>Coming up:</h1>
-    <ul class="queue">
+    <ul>
       <% queue.each do |song| %>
         <li>
           <%= erb :song, :locals => {:song => song} %>
@@ -17,4 +17,11 @@
       <% end %>
     </ul>
   <% end %>
+</div>
+<div id="upload">
+  <h1>Upload file:</h1>
+  <form enctype="multipart/form-data" action="/songs" method="post">
+    <input type="file" name="data" class="white" />
+    <input type="submit" value="Upload" style="float: right" />
+  </form>
 </div>

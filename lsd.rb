@@ -42,6 +42,7 @@ class LSD < Sinatra::Base
     # Add filename to the queue and increment id
     @@id = @@id + 1
     if @@player.add_song file_name
+      redirect '/songs'
       "HUGE SUCCES\n"
     else
       status 403

@@ -7,9 +7,9 @@ html {
     font-variant: small-caps;
 }
 
-div.content {
+div#content {
     width: 500px;
-    margin: 300px auto 0px auto;
+    margin: 290px auto 0px auto;
 }
 
 h1 {
@@ -23,4 +23,14 @@ strong {
 ul {
     list-style-type: none;
     padding: 0px;
+}
+
+input {
+    font-family: 'Tahoma', sans-serif;
+    font-size: 16px;
+    font-variant: small-caps;
+}
+
+input.white {
+    color: white;
 }

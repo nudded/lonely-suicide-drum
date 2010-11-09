@@ -18,4 +18,4 @@ REST api
 
 GET /songs => Show song listing
 
-PUT /songs => Upload song(s)
+POST /songs => Upload song(s)

@@ -5,9 +5,12 @@ require 'player/mplayer_player'
 
 class LSD < Sinatra::Base
 
-  MUSIC_DIRECTORY = File.expand_path 'test_music'
+  # Allow static files from the public directory
+  set :static, true
+  set :public, 'public'
 
   # Clean music direcory
+  MUSIC_DIRECTORY = File.expand_path 'test_music'
   Dir.glob("#{MUSIC_DIRECTORY}/*").each do |file|
     File.delete file
   end
@@ -21,8 +24,9 @@ class LSD < Sinatra::Base
 
   # Show song list
   get '/songs' do
-    erb :songs, :locals => {:now_playing => @@player.now_playing,
-                            :queue => @@player.queue}
+    content = erb :songs, :locals => {:now_playing => @@player.now_playing,
+                                      :queue => @@player.queue}
+    erb :index, :locals => {:content => content}
   end
 
   # Add a song

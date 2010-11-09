@@ -19,3 +19,8 @@ REST api
 GET /songs => Show song listing
 
 POST /songs => Upload song(s)
+
+Dependencies
+------------
+
+- ruby-taglib2

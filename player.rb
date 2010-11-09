@@ -1,13 +1,15 @@
 # Music player
+require 'song'
+
 class Player
   def initialize
     @queue = Array.new
     @now_playing = nil
   end
 
-  def add_song song
+  def add_song file_name
     if @queue.size < 10
-      @queue << song
+      @queue << Song.new(file_name)
       true
     else
       false
@@ -24,7 +26,7 @@ class Player
         @now_playing = song
         play_song song
         @now_playing = nil
-        File.delete song
+        File.delete song.file_name
       end
     end
   end
@@ -33,12 +35,16 @@ class Player
     @now_playing
   end
 
+  def queue
+    @queue
+  end
+
   # Default implementation: override this!
   #
   # This function should block while the file is playing.
   #
   def play_song song
-    puts "Playing #{song}..."
+    puts "Playing #{song.file_name}..."
     sleep 10
   end
 end

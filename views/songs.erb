@@ -1,0 +1,14 @@
+<div class="now_playing">
+  <% if now_playing %>
+    <%= erb :song, :locals => {:song => now_playing} %>
+  <% else %>
+    Not playing.
+  <% end %>
+</div>
+<ul class="queue">
+  <% queue.each do |song| %>
+    <li>
+      <%= erb :song, :locals => {:song => song} %>
+    </li>
+  <% end %>
+</ul>

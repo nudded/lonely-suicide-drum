@@ -1,5 +1,6 @@
 require 'fileutils'
 require 'sinatra/base'
+require 'erb'
 require 'player/mplayer_player'
 
 class LSD < Sinatra::Base
@@ -20,7 +21,8 @@ class LSD < Sinatra::Base
 
   # Show song list
   get '/songs' do
-    @@player.now_playing
+    erb :songs, :locals => {:now_playing => @@player.now_playing,
+                            :queue => @@player.queue}
   end
 
   # Add a song
@@ -28,14 +30,14 @@ class LSD < Sinatra::Base
     # Read POST'ed file and put it into the MUSIC_DIRECTORY
     data = params[:data]
     tempfile = data[:tempfile]
-    filename = File.join MUSIC_DIRECTORY, @@id.to_s + "-" + data[:filename]
-    File.open filename, "wb" do |file|
+    file_name = File.join MUSIC_DIRECTORY, @@id.to_s + "-" + data[:filename]
+    File.open file_name, "wb" do |file|
       file.write(tempfile.read)
     end
 
     # Add filename to the queue and increment id
     @@id = @@id + 1
-    if @@player.add_song filename
+    if @@player.add_song file_name
       "HUGE SUCCES\n"
     else
       status 403

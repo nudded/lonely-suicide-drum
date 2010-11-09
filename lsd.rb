@@ -11,17 +11,16 @@ class LSD < Sinatra::Base
     File.delete file
   end
 
-  # Start with an empty queue
-  @@queue = Array.new
+  # ID for generating file names
   @@id = 0
 
   # Start the player
-  player = Player.new @@queue
-  Thread.new {player.run}
+  @@player = Player.new
+  Thread.new {@@player.run}
 
   # Show song list
   get '/songs' do
-    @@queue.join " "
+    @@player.now_playing
   end
 
   # Add a song
@@ -36,8 +35,8 @@ class LSD < Sinatra::Base
 
     # Add filename to the queue and increment id
     @@id = @@id + 1
-    @@queue << filename
-    @@queue.to_s
+    @@player.add_song filename
+    'HUGE SUCCES'
   end
 
   # Home

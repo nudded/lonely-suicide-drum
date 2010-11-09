@@ -1,5 +1,4 @@
 #!/bin/bash
-echo "$#"
 
 if [[ $# -lt 2 ]]; then
     echo "Usage: $0 host:port file1 [file2 file3 ...]"

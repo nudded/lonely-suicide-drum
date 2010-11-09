@@ -1,18 +1,20 @@
 <div class="now_playing">
-  <p>Now playing:</p>
   <% if now_playing %>
+    <h1>Now playing:</h1>
     <%= erb :song, :locals => {:song => now_playing} %>
   <% else %>
-    Not playing.
+    <h1>Not playing.</h1>
   <% end %>
 </div>
 <div class="queue">
-  <p>Coming up:</p>
-  <ul class="queue">
-    <% queue.each do |song| %>
-      <li>
-        <%= erb :song, :locals => {:song => song} %>
-      </li>
-    <% end %>
-  </ul>
+  <% if not queue.empty? %>
+    <h1>Coming up:</h1>
+    <ul class="queue">
+      <% queue.each do |song| %>
+        <li>
+          <%= erb :song, :locals => {:song => song} %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>

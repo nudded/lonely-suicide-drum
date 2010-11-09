@@ -1,11 +1,26 @@
 html {
+    background: black url("/background.png") no-repeat top center;
     color: white;
-    background-color: black;
+
     font-family: 'Tahoma', sans-serif;
-    font-size: 20px;
+    font-size: 16px;
+    font-variant: small-caps;
 }
 
 div.content {
-  width: 500px;
-  margin: 0px auto 0px auto;
+    width: 500px;
+    margin: 300px auto 0px auto;
+}
+
+h1 {
+    font-size: 18px;
+}
+
+strong {
+    color: rgb(130, 0, 0);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0px;
 }

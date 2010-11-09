@@ -8,7 +8,7 @@ class Player
   end
 
   def add_song file_name
-    if @queue.size < 10
+    if @queue.size < 20
       @queue << Song.new(file_name)
       true
     else

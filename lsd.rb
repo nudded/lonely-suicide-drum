@@ -1,6 +1,6 @@
 require 'fileutils'
 require 'sinatra/base'
-require 'player'
+require 'player/mplayer_player'
 
 class LSD < Sinatra::Base
 
@@ -15,7 +15,7 @@ class LSD < Sinatra::Base
   @@id = 0
 
   # Start the player
-  @@player = Player.new
+  @@player = MPlayerPlayer.new
   Thread.new {@@player.run}
 
   # Show song list
@@ -38,7 +38,8 @@ class LSD < Sinatra::Base
     if @@player.add_song filename
       "HUGE SUCCES\n"
     else
-      "FAIL\n"
+      status 403
+      "Queue is full\n"
     end
   end
 

@@ -6,7 +6,12 @@ class Player
   end
 
   def add_song song
-    @queue << song
+    if @queue.size < 10
+      @queue << song
+      true
+    else
+      false
+    end
   end
 
   def run
@@ -34,6 +39,6 @@ class Player
   #
   def play_song song
     puts "Playing #{song}..."
-    sleep 4
+    sleep 10
   end
 end

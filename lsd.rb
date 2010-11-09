@@ -35,8 +35,11 @@ class LSD < Sinatra::Base
 
     # Add filename to the queue and increment id
     @@id = @@id + 1
-    @@player.add_song filename
-    'HUGE SUCCES'
+    if @@player.add_song filename
+      "HUGE SUCCES\n"
+    else
+      "FAIL\n"
+    end
   end
 
   # Home

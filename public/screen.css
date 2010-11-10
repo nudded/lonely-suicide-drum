@@ -12,6 +12,16 @@ div#content {
     margin: 290px auto 0px auto;
 }
 
+footer {
+    font-size: 14px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+a {
+    color: rgb(130, 0, 0);
+}
+
 h1 {
     font-size: 18px;
 }

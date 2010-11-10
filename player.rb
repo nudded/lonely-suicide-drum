@@ -2,6 +2,8 @@
 require 'song'
 
 class Player
+  attr_accessor :queue, :now_playing
+
   def initialize
     @queue = Array.new
     @now_playing = nil
@@ -29,14 +31,6 @@ class Player
         File.delete song.file_name
       end
     end
-  end
-
-  def now_playing
-    @now_playing
-  end
-
-  def queue
-    @queue
   end
 
   # Default implementation: override this!

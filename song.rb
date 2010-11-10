@@ -2,24 +2,18 @@
 require 'taglib2'
 
 class Song
+  attr_accessor :file_name
+
   def initialize file_name
     @file_name = file_name
     @file = TagLib2::File.new file_name
   end
 
-  def file_name
-    @file_name
-  end
-
-  def title
-    @file.title
-  end
-
-  def artist
-    @file.artist
-  end
-
-  def album
-    @file.album
+  def method_missing name
+    if @file.respond_to? name
+      @file.send name
+    else
+      super
+    end
   end
 end

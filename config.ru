@@ -2,4 +2,5 @@ $:.unshift Dir.pwd
 require 'lsd'
 require 'player/mplayer_player'
 
-run LSD.new(MPlayerPlayer, 'test_music')
+player = MPlayerPlayer.new "mplayer"
+run LSD.new(player, 'test_music')

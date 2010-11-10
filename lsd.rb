@@ -8,10 +8,11 @@ class LSD < Sinatra::Base
   set :static, true
   set :public, 'public'
 
-  def initialize player_class, music_directory
+  def initialize player, music_directory
     super()
 
     @music_directory = File.expand_path music_directory
+    @player = player
 
     # Clean music direcory
     Dir.glob("#{@music_directory}/*").each do |file|
@@ -22,7 +23,6 @@ class LSD < Sinatra::Base
     @id = 0
 
     # Start the player
-    @player = player_class.new
     Thread.new {@player.run}
   end
 
@@ -38,7 +38,8 @@ class LSD < Sinatra::Base
     # Read POST'ed file and put it into the music directory
     data = params[:data]
     tempfile = data[:tempfile]
-    file_name = File.join @music_directory, @id.to_s + "-" + data[:filename]
+    extension = File.extname(data[:filename])
+    file_name = File.join @music_directory, @id.to_s + extension
     File.open file_name, "wb" do |file|
       file.write(tempfile.read)
     end

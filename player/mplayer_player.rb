@@ -9,6 +9,6 @@ class MPlayerPlayer < Player
 
   def play_song song
     puts "Playing #{song.file_name}..."
-    `#{@mplayer_path} -quiet '#{song.file_name}'`
+    `#{@mplayer_path} -quiet '#{song.file_name}'`.join
   end
 end
